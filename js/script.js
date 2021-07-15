@@ -14,10 +14,9 @@ function makeRows(rows, cols) {
   };
 
 function changeGridColor(event) {
-  let a = Math.floor(Math.random() * 256);
-  let b = Math.floor(Math.random() * 256);
-  let c = Math.floor(Math.random() * 256);
-  event.target.style.backgroundColor = `rgb(${a}, ${b}, ${c})`;
+  let a = Math.floor(Math.random() * 360);
+ 
+  event.target.style.backgroundColor = `hsl(${a}, 100%, 50%)`;
   event.target.style.opacity += 0.1;
 
   console.log(event)
@@ -38,8 +37,8 @@ function resetGrid() {
 
 resetButton.addEventListener("click", () =>{
   resetGrid();
-  let gridSelect = prompt("Grid has been reset, please choose a number (between 1-100) to create a new grid:");
-  if( gridSelect > 0 || gridSelect < 101) {
+  let gridSelect = Math.round(prompt("Grid has been reset, please choose a number (between 1-100) to create a new grid:"));
+  if( gridSelect > 0 && gridSelect < 101) {
     makeRows(gridSelect, gridSelect);
   } else {
     makeRows(16, 16);
